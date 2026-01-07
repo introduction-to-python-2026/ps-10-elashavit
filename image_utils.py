@@ -4,8 +4,9 @@ from scipy.ndimage import convolve
 
 
 def load_image(path):
-    ` img = Image.open(path).convert("RGB")
+    img = Image.open(path).convert("RGB")
     return np.array(img)
+
 
 def edge_detection(image):
     gray = image.mean(axis=2)
@@ -22,8 +23,8 @@ def edge_detection(image):
         [1,  2,  1]
     ])
 
-    edgeX = convolve2d(gray, kernelX, mode="same", boundary="fill", fillvalue=0)
-    edgeY = convolve2d(gray, kernelY, mode="same", boundary="fill", fillvalue=0)
+    edgeX = convolve(gray, kernelX, mode="constant", cval=0.0)
+    edgeY = convolve(gray, kernelY, mode="constant", cval=0.0)
 
     edgeMAG = np.sqrt(edgeX**2 + edgeY**2)
 
