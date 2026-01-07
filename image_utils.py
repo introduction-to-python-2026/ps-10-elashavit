@@ -4,8 +4,9 @@ from scipy.ndimage import convolve
 
 
 def load_image(path):
-    img = Image.open(path).convert("RGB")
+    img = Image.open(path)
     return np.array(img)
+
 
 
 def edge_detection(image):
